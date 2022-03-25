@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="image">
+    <file>cross.png</file>
+    <file>17.jpg</file>
+    <file>eye.png</file>
+    <file>eye_1.png</file>
+    <file>galka.png</file>
+    <file>eye2.png</file>
+    <file>eye2_1.png</file>
+  </qresource>
+</RCC>
