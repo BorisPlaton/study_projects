@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %} Личный кабинет {% endblock %}
+
+{% block content %}
+<div class="container p-5">
+    <div class="row">
+
+        <!-- PROFILE INFORMATION-->
+        <div class="col-12 border-bottom pb-4 pt-4">
+            <div class="row g-3">
+
+                <div class="col-md-6 fs-4 fw-light p-0">
+                    <span class="text-secondary">Имя профиля: </span>
+                    <span>{{ user.username }}</span>
+                </div>
+
+                <div class="col-md-6 fs-4 fw-light p-0">
+                    <span class="text-secondary">Почта: </span>
+                    <span>{{ user.email }}</span>
+                </div>
+
+                <div class="col-md-6 fs-4 fw-light p-0">
+                    <span class="text-secondary">Дата регистрации: </span>
+                    <span>{{ user.registration_date }}</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ACTIVITY INFO-->
+        <div class="col-12 pt-4">
+            <div class="row">
+
+                <div class="col-md-6 p-0 text-md-center text-start">
+                    <h3 class="text-secondary fw-light">Мои посты</h3>
+                    <div class="row g-3">
+
+                        <!--POST TITLE-->
+                        {% for post in user.posts %}
+                            <div class="d-flex align-items-center news rounded">
+
+                                <!-- DELETE BUTTON -->
+                                <a href="{{ url_for('delete', num=post.id) }}" class="side-bar">
+                                    <span><i class="bi bi-trash3" style="vertical-align: -0.15em;"></i></span>
+                                </a>
+
+                                <!-- INFO -->
+                                <a href="{{ url_for('post', num=post.id) }}" class="text-decoration-none flex-fill">
+                                    <div class="col-12 d-flex align-items-center justify-content-between py-2 px-4 news">
+                                            <div>
+                                                <h4 class="fw-light m-0">{{ post.title }}</h4>
+                                            </div>
+                                            <div>
+                                                <span class="fw-light text-secondary">{{ post.date_post.strftime('%Y-%m-%d') }}, {{ post.date_post.strftime('%H:%M:%S') }}</span>
+                                            </div>
+                                    </div>
+                                </a>
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+
+                <!-- USER COMMENTS -->
+                <div class="col-md-6 p-0 text-md-center text-start">
+                    <h3 class="text-secondary fw-light">Мои комментарии</h3>
+
+                    <div class="row g-3">
+
+                        <!-- COMMENTS TITLE-->
+                        {% for comment in user.comments %}
+                            <div class="d-flex align-items-center news rounded">
+
+                                <!-- INFO -->
+                                <a href="{{ url_for('post', num=comment.post.id) }}" class="text-decoration-none flex-fill">
+                                    <div class="col-12 d-flex flex-column py-2 px-4 news">
+
+                                        <div class="d-flex justify-content-between flex-fill">
+                                            <div>
+                                                <h4 class="fw-light m-0">{{ comment.post.title }}</h4>
+                                            </div>
+                                            <div>
+                                                <span class="fw-light text-secondary">{{ comment.date_comment.strftime('%Y-%m-%d') }}, {{ comment.date_comment.strftime('%H:%M:%S') }}</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex mt-2">
+                                            {% if comment.text|length > 100 %}
+                                                <p class="fw-light fs-6 text-secondary text-start">{{ comment.text[:100] }}<span> (...)</span></p>
+                                            {% else %}
+                                                <p class="fw-light fs-6 text-secondary">{{ comment.text }}</p>
+                                            {% endif %}
+                                            
+                                        </div>
+
+                                    </div>
+                                </a>
+
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

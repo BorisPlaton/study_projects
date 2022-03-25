@@ -1,0 +1,56 @@
+{% from "_macro.html" import render_field, render_select_button %}
+
+{% extends "base.html" %}
+
+{% block title %} Логин {% endblock %}
+
+{% block content %}
+
+<div class="container p-5 d-flex flex-column justify-content-center align-items-center">
+
+        <!-- FLASH MESSAGE-->
+        {% for cat, msg in get_flashed_messages(True) %}
+            <div class="alert alert-{{ cat }}" style="width: 350px;">{{ msg }}</div>
+        {% endfor %}
+
+        <div class="bg-light p-5 rounded" style="max-width: 350px;">
+            <!-- TITLE FORM -->
+            <h3 class="text-center mb-3">Вход</h3>
+
+            <form action="{{ url_for('login') }}" method="POST" novalidate>
+                {{ form.csrf_token }}
+
+                <!-- INPUT FORM -->
+                <div class="row g-2">
+
+                    <!-- EMAIL -->
+                    <div class="col-12">
+                        {{ render_field(form.email, placeholder=form.email.label.text) }}
+                    </div>
+
+                    <!-- PASSWORD -->
+                    <div class="col-12">
+                        {{ render_field(form.password, placeholder=form.password.label.text) }}
+                    </div>
+
+                    <!-- REMEMBER SELECT BUTTON -->
+                    <div class="col-12">
+                        {{ render_select_button(form.remember) }}
+                        <div class="mt-1">
+                            <small><a class="text-decoration-none" href="{{ url_for('register') }}">Нет аккаунта?</a></small>
+                        </div>
+                    </div>
+
+                    <!-- SUBMIT BUTTON -->
+                    <div class="col-12 d-flex justify-content-center mt-5">
+                        {{ form.submit(class="btn btn-outline-success") }}
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
