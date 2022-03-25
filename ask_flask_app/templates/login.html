@@ -1,0 +1,47 @@
+{% extends 'home.html'%}
+
+{% block title %}
+Login
+{% endblock %}
+
+
+
+{% block content %}
+
+<h2 class="fw-light fs-2 mb-4">Login</h2>
+
+<div class="d-flex flex-column">
+    
+    <form action="" method="post">
+
+        <!-- INPUT NAME AND INPUT PASSWORD -->
+        <div class="form-floating mb-3">
+            <input name="login"
+                   type="text"
+                   class="form-control"
+                   id="floatingInput"
+                   placeholder="Login"
+                   autocomplete="off" required>
+            <label for="floatingInput">Login</label>
+        </div>
+        <div class="form-floating">
+            <input name="password"
+                   type="password"
+                   class="form-control"
+                   id="floatingPassword"
+                   placeholder="Password"
+                   autocomplete="off" required>
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        <!-- REGISTER BUTTON -->
+        <div class="d-flex mt-4 justify-content-md-start">
+          <button class="btn btn-warning me-md-2" type="submit">Login</button>
+        </div>
+
+    </form>
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'home.html' %}
+
+{% block title %} Ask a Question {% endblock %}
+
+{% block content %}
+
+<h2 class="fw-light fs-2 mb-4">Ask a Question</h2>
+
+<div class="d-flex flex-column">
+    
+    <!-- INPUTS -->
+    <form action="{{ url_for('ask_question') }}" method="post">
+
+        <div class="d-flex" style="height: 50vh;">
+
+            <div class="flex-fill">
+                <textarea name="question_text" class="form-control" id="exampleFormControlTextarea1" rows="3" style="resize: none; height: 100%;" placeholder="Question"></textarea>
+            </div>
+
+        </div>
+
+        <div class="d-flex justify-content-between mt-2">
+
+            <!-- DROPDOWN -->
+            <div class="dropdown" style="width: 50%;">
+                <select class="form-select" aria-label="Default select example" name="expert_id">
+                    {% for expert in experts %}
+                        <option value="{{ expert.id }}">{{ expert.user_name }}</option>
+                    {% endfor %}
+                </select>
+            </div> 
+
+            <!-- SUBMIT BUTTON -->
+            <div class="d-flex justify-content-md-start align-items-center">
+                {% if submit_status %}<span class="me-3 text-success fw-bold">Submitted!</span>{% endif %}
+                <button class="btn btn-warning" type="submit">Submit</button>
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+    
+{% endblock %}
