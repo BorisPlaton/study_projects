@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>images/arrow_combo_box_down.png</file>
+    <file>images/checked.png</file>
+    <file>images/arrow_combo_box_up.png</file>
+    <file>images/arrow_close.png</file>
+    <file>images/arrow_open2.png</file>
+    <file>images/home.png</file>
+    <file>images/settings1.png</file>
+    <file>images/full_side2.png</file>
+    <file>images/hide1.png</file>
+    <file>images/cross.png</file>
+    <file>images/full1.png</file>
+  </qresource>
+</RCC>
