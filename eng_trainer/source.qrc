@@ -1,0 +1,13 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/question1_pressed.png</file>
+    <file>icons/question1_hover.png</file>
+    <file>icons/checked.png</file>
+    <file>icons/question1.png</file>
+    <file>icons/fon8.png</file>
+    <file>icons/cross.png</file>
+    <file>icons/full1.png</file>
+    <file>icons/hide1.png</file>
+    <file>icons/fon_game.png</file>
+  </qresource>
+</RCC>
