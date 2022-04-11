@@ -4,6 +4,5 @@
 Использованные фреймворки:
 * Flask
 * Bootstrap5
-* Selenium
 * PyQt5
 * Tkinter
